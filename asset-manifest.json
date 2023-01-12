@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/health-care-chatbot/static/js/main.e5547d07.js",
+    "index.html": "/health-care-chatbot/index.html",
+    "main.e5547d07.js.map": "/health-care-chatbot/static/js/main.e5547d07.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.e5547d07.js"
+  ]
+}
