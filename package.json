@@ -2,6 +2,7 @@
   "name": "srbfzt--run",
   "version": "0.0.0",
   "private": true,
+  "homepage": "https://ming233.github.io/health-care-chatbot",
   "dependencies": {
     "@progress/kendo-licensing": "1.3.0",
     "@progress/kendo-react-buttons": "5.9.0",
