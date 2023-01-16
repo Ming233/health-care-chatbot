@@ -4,6 +4,7 @@ import { Chat, HeroCard } from '@progress/kendo-react-conversational-ui';
 import { Calendar } from '@progress/kendo-react-dateinputs';
 import { DirectLine } from 'botframework-directlinejs';
 import AdaptiveCards from "adaptivecards";
+
 const client = new DirectLine({
   secret: "yFLWlpeK3CI.cwA.r18.M9VxoEcUnMthu5zsWX2Ox95r5YCcvbC_GvPJooRM0sQ"
 });
@@ -16,11 +17,14 @@ const bot = {
   name: 'HealthCare Bot',
   avatarUrl: "https://demos.telerik.com/kendo-ui/content/chat/HealthCareBot.png"
 };
+
 const App = () => {
   const [messages, setMessages] = React.useState([]);
+
   React.useEffect(() => {
     client.activity$.subscribe(activity => onResponse(activity));
   }, []);
+
   const аttachmentTemplate = props => {
     let attachment = props.item;
     if (attachment.contentType === "application/vnd.microsoft.card.hero") {
@@ -39,6 +43,7 @@ const App = () => {
       return <div dangerouslySetInnerHTML={htmlToinsert} />;
     }
   };
+
   const parseActions = actions => {
     if (actions !== undefined) {
       actions.actions.map(action => {
@@ -50,6 +55,7 @@ const App = () => {
     }
     return [];
   };
+
   const parseText = event => {
     if (event.action !== undefined) {
       return event.action.value;
@@ -59,6 +65,7 @@ const App = () => {
       return event.message.text;
     }
   };
+
   const onResponse = activity => {
     let newMessage;
     let dateRe = /date/i;
@@ -84,6 +91,7 @@ const App = () => {
       }]);
     }
   };
+
   const addNewMessage = event => {
     let value = parseText(event);
     client.postActivity({
@@ -102,6 +110,8 @@ const App = () => {
       }]);
     }
   };
+
   return <Chat messages={messages} user={user} onMessageSend={addNewMessage} attachmentTemplate={аttachmentTemplate} />;
 };
+
 ReactDOM.render(<App />, document.querySelector('my-app'));
